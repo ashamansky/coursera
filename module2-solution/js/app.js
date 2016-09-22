@@ -1,23 +1,23 @@
 (function(){
   'use strict';
   angular
-    .module("ShoppingListApp", [])
-    .controller("BuyListController", BuyListController)
-    .controller("BoughtListController", BoughtListController)
-    .service("ShoppingListService", ShoppingListService);
+    .module("ShoppingListCheckOff", [])
+    .controller("ToBuyShoppingController", ToBuyShoppingController)
+    .controller("AlreadyBoughtShoppingController", AlreadyBoughtShoppingController)
+    .service("ShoppingListCheckOffService", ShoppingListCheckOffService);
 
-    BuyListController.$inject = ['ShoppingListService'];
-    BoughtListController.$inject = ['ShoppingListService'];
+    ToBuyShoppingController.$inject = ['ShoppingListCheckOffService'];
+    AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
 
     function isEmpty(arr) {
       return (typeof arr.items === undefined) || (arr.length == 0);
     }
 
-    function BuyListController(ShoppingListService) {
+    function ToBuyShoppingController(ShoppingListCheckOffService) {
         var buyListCtrl = this;
 
         buyListCtrl.items = function() {
-          return ShoppingListService.buyItems();
+          return ShoppingListCheckOffService.buyItems();
         }
 
         buyListCtrl.isEmpty = function() {
@@ -25,15 +25,15 @@
         }
 
         buyListCtrl.bought = function(index) {
-          ShoppingListService.bought(index);
+          ShoppingListCheckOffService.bought(index);
         }
     }
 
-    function BoughtListController(ShoppingListService) {
+    function AlreadyBoughtShoppingController(ShoppingListCheckOffService) {
         var boughtListCtrl = this;
 
         boughtListCtrl.items = function() {
-          return ShoppingListService.boughtItems();
+          return ShoppingListCheckOffService.boughtItems();
         }
 
         boughtListCtrl.isEmpty = function() {
@@ -41,7 +41,7 @@
         }
     }
 
-    function ShoppingListService() {
+    function ShoppingListCheckOffService() {
         var service = this;
 
         var buyList = [
