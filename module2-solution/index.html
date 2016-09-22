@@ -22,32 +22,33 @@
       }
     </style>
   </head>
-<body>
+<body ng-app="ShoppingListApp">
   <div class="container">
   <h1>Shopping List Check Off</h1>
 
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="BuyListController as buyListCtrl">
      <h2>To Buy:</h2>
      <ul>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in buyListCtrl.items()">Buy {{ item.quantity}} {{item.name }} <button class="btn btn-default" ng-click="buyListCtrl.bought($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
-     <div class="emptyMessage">Everything is bought!</div>
+     <div class="emptyMessage" ng-show="buyListCtrl.isEmpty()">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6">
+    <div class="col-md-6"  ng-controller="BoughtListController as boughtListCtrl">
      <h2>Already Bought:</h2>
      <ul>
-       <li>Bought 10 cookies</li>
+       <li ng-repeat="item in boughtListCtrl.items()">Bought {{item.quantity}} {{item.name }}</li>
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-show="boughtListCtrl.isEmpty()">Nothing bought yet.</div>
     </div>
   </div>
 </div>
 
+<script src="js/angular.min.js" charset="utf-8"></script>
+<script src="js/app.js" charset="utf-8"></script>
 </body>
 </html>
