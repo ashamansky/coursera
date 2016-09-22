@@ -57,6 +57,18 @@
             "name": "Tomatoes",
             "quantity": "1kg"
           },
+          {
+            "name": "Banana",
+            "quantity": "2kg"
+          },
+          {
+            "name": "Bread",
+            "quantity": "1"
+          },
+          {
+            "name": "Candies",
+            "quantity": "200gr"
+          },
         ];
         var boughtList = [];
 
