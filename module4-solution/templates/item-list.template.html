@@ -1,0 +1,9 @@
+<ul>
+  <li ng-repeat="item in $ctrl.items" class="menu-item">
+    <h4>{{item.name}} <b>{{item.price_large | currency}}</b></h4>
+    <div class="description">
+      {{item.description}}
+    </div>
+  </li>
+  <ui-view></ui-view>
+</ul>
